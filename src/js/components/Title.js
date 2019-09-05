@@ -3,3 +3,4 @@ export function Title(text){
     title.innerText = text;
     document.getElementById('root').append(title);
 }
+
