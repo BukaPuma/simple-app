@@ -65,6 +65,7 @@ export default class Counter{
 
     timerStop() {
         clearInterval(this.timer)
+        this.timer = null
     }
 
     
