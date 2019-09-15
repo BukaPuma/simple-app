@@ -1,54 +1,22 @@
-import Domworker from './DomWorker'
+import $ from 'jquery';
 
-import TitleComponent from './components/TitleComponent'
-import ListComponent from './components/ListComponent'
-import CenterComponent from './components/CenterComponent'
+$(document).ready(() => {
+    
+    //Вывод текста в заданной позиции
+    const searchText = $('ul li div div:nth-child(5) button:nth-child(2)').text();
+    alert(searchText);
 
-const names = ['Harry', 'Rohn', 'Jiny', 'Germiona']
-Domworker.mount(new TitleComponent('Pro'), 
-document.getElementById('title'))
-
-Domworker.mount(new ListComponent(names), 
-document.getElementById('list')
-)
-
-Domworker.mount(
-    new CenterComponent(
-        new ListComponent(names)
-        ), 
-    document.getElementById('center')
-)
-
-const btn = document.createElement('button')
-btn.innerText = 'Click'
+    //вывод текста по нажатию заданной кнопки
+    const searchButton = $('ul li div div:nth-child(5) button:nth-child(2)');
+        searchButton.click(function() {
+        alert(searchText);
+    } )
 
 
-Domworker.mount(new CenterComponent(btn), 
-document.getElementById('center_second')
-)
+    
 
-const brush = {
-    createComponent: function() {console.log('Я создатель')},
-
-
-    render : function(canvas) {
-        canvas.style.width = '250px'
-        canvas.style.height = '250px'
-        canvas.style.backgroundColor = this.color
-    },
-
-    setColor: function(color) {
-        this.color = color
-        return this
-    }
-
-
-}
-
-Domworker.mount(
-    brush.setColor('red'),
-    document.getElementById('other')
-)
+    //$('ul li div div:nth-child(5) button:nth-child(2)').text('Finded');
 
 
 
+})

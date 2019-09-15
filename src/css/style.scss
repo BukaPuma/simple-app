@@ -1,37 +1,28 @@
-
-body {
-    ul, li {
+body{
+    ul, li{
         display: block;
         padding: 0;
     }
-    li {
+
+    li{
         list-style-type: none;
-
     }
-    .pretty-btn {
 
-        font-size: 25px;
-        padding: 10px 20px;
-        border:  none;
-        border-radius: 5px;
-        background-color: rgb(169, 185, 204);
+    .square{
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+        background-color: blueviolet;
         transition: all .5s;
-        box-shadow: 3px 3px 3px rgba(0,0,0, 0.169);
-
-        &:focus {
-            transition: all .5s ease-in;
-            box-shadow: 1px 1px 1px rgba(0,0,0, 0.192);
-            
-        }
-
     }
-    
-    @import './app/header.scss';
-    @import './app/about.scss';
-    @import './app/footer.scss';
-    @import './app/counter.scss';
+
+    .square-soft{
+        border-radius: 15px;
+    }
+
+    ul li div div:nth-child(5) button:nth-child(2) {
+        background-color: aqua;
+    }
 
 }
-
-
 
