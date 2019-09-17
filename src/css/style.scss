@@ -1,13 +1,13 @@
-
-body {
-    ul, li {
+body{
+    ul, li{
         display: block;
         padding: 0;
     }
-    li {
-        list-style-type: none;
 
+    li{
+        list-style-type: none;
     }
+<<<<<<< HEAD
 
     .todo {
         
@@ -16,3 +16,24 @@ body {
         text-decoration: line-through;
     }
 }
+=======
+
+    .square{
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+        background-color: blueviolet;
+        transition: all .5s;
+    }
+
+    .square-soft{
+        border-radius: 15px;
+    }
+
+    ul li div div:nth-child(5) button:nth-child(2) {
+        background-color: aqua;
+    }
+
+}
+
+>>>>>>> 89ff672f836ec7c95599c97519a6b7409188c394

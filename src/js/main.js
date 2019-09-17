@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import $ from 'jquery'
 
 import todoService from './TodoService'
@@ -35,3 +36,27 @@ $(document).ready(() => {
     renderTodoList(todoService.todoList, todoList)
 
 })
+=======
+import $ from 'jquery';
+
+$(document).ready(() => {
+    
+    //Вывод текста в заданной позиции
+    const searchText = $('ul li div div:nth-child(5) button:nth-child(2)').text();
+    alert(searchText);
+
+    //вывод текста по нажатию заданной кнопки
+    const searchButton = $('ul li div div:nth-child(5) button:nth-child(2)');
+        searchButton.click(function() {
+        alert(searchText);
+    } )
+
+
+    
+
+    //$('ul li div div:nth-child(5) button:nth-child(2)').text('Finded');
+
+
+
+})
+>>>>>>> 89ff672f836ec7c95599c97519a6b7409188c394
