@@ -1,54 +1,37 @@
-import Domworker from './DomWorker'
+import $ from 'jquery'
 
-import TitleComponent from './components/TitleComponent'
-import ListComponent from './components/ListComponent'
-import CenterComponent from './components/CenterComponent'
+import todoService from './TodoService'
+import {
+    todoItem,
+    todoList,
+    btnAddTodo,
+    inputTodo
+} from './constants'
 
-const names = ['Harry', 'Rohn', 'Jiny', 'Germiona']
-Domworker.mount(new TitleComponent('Pro'), 
-document.getElementById('title'))
+function renderTodoList(list, container){
+    container.html('')
 
-Domworker.mount(new ListComponent(names), 
-document.getElementById('list')
-)
+    list.map((todo, id)=>{
+        const todoComponent = todoItem(todo, id)
+        container.html(container.html() + todoComponent)
 
-Domworker.mount(
-    new CenterComponent(
-        new ListComponent(names)
-        ), 
-    document.getElementById('center')
-)
+    })
+    $('button[data-type="status"]').click((e)=> {
+        const id =  $(e.currentTarget).attr('data-id')
+        const status = $(e.currentTarget).attr('data-status') === 'open' ? 'close' : 'open'
 
-const btn = document.createElement('button')
-btn.innerText = 'Click'
+        renderTodoList(todoService.changeTodo(id, status), container)
+    })
 
+    $('button[data-type="remove"]').click((e)=> {
+        const id = $(e.currentTarget).attr('data-id')
+        renderTodoList(todoService.removeTodo(id), container)
+    })
 
-Domworker.mount(new CenterComponent(btn), 
-document.getElementById('center_second')
-)
-
-const brush = {
-    createComponent: function() {console.log('Я создатель')},
-
-
-    render : function(canvas) {
-        canvas.style.width = '250px'
-        canvas.style.height = '250px'
-        canvas.style.backgroundColor = this.color
-    },
-
-    setColor: function(color) {
-        this.color = color
-        return this
-    }
-
-
+    
 }
 
-Domworker.mount(
-    brush.setColor('red'),
-    document.getElementById('other')
-)
+$(document).ready(() => {
+    renderTodoList(todoService.todoList, todoList)
 
-
-
+})
